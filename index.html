@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Text Transformation</title>
   </head>
   <body>
@@ -29,7 +30,7 @@
     </nav>
     <div class="container-fluid" style="height: calc(100vh - 54px);">
       <div class="row" style="height: 100%;">
-        <div class="col-md-3" style="background-color: #F5F5F5">
+        <div class="col-lg-3" style="background-color: #F5F5F5">
           <h2 class="my-4">Text Transformation</h2>
           <p class="text-justify">
             This module includes the options to change how text transformation is done on the crawled pages. You can select a certain set of words, toggle characteristics and more on the right side of the screen.<br><br>
@@ -37,87 +38,79 @@
             <strong>NOTE: </strong>Any changes made will be reflected only on new documents from the next transformation cycle.
           </p>
         </div>
-        <div class="col-md-9">
+        <div class="col-lg-9">
           <div class="row">
-            <div class="col-6">
+            <div class="col-md-6">
               <div class="box my-2 mx-2" style="border: 2px solid black; border-radius: 4px;">
-                <div class="row">
-                  <div class="col-9">
-                    <h4 class="my-2 mx-2">Lemmatization</h4>
+                <div class="row pt-2">
+                  <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
+                    Lemmatization
                   </div>
-                  <div class="col-3">
-                    <div style="height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -25%);">
-                      TOGGLE
-                    </div>
+                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;">
+                    <i class="fa fa-toggle-off" style="color: red;"></i>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12">
-                    <p class="my-2 mx-2">
+                    <p class="mx-2">
                       Consider words with same meaning as similar. For example, "good" and "better" imply similar meaning and search queries with either should output almost similar results.
                     </p>
                   </div>
                 </div>
               </div>
               <div class="box my-2 mx-2" style="border: 2px solid black; border-radius: 4px;">
-                <div class="row">
-                  <div class="col-9">
-                    <h4 class="my-2 mx-2">Stemming</h4>
+                <div class="row pt-2">
+                  <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
+                    Stemming
                   </div>
-                  <div class="col-3">
-                    <div style="height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -25%);">
-                      TOGGLE
-                    </div>
+                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;">
+                    <i class="fa fa-toggle-off" style="color: red;"></i>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12">
-                    <p class="my-2 mx-2">
+                    <p class="mx-2">
                       Identify words that have the same origin stem. For example, "computers" and "computer" imply the user looking for the same element.
                     </p>
                   </div>
                 </div>
               </div>
               <div class="box my-2 mx-2" style="border: 2px solid black; border-radius: 4px;">
-                <div class="row">
-                  <div class="col-9">
-                    <h4 class="my-2 mx-2">Bi-Gram Identification</h4>
+                <div class="row pt-2">
+                  <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
+                    Bi-Gram Identification
                   </div>
-                  <div class="col-3">
-                    <div style="height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -25%);">
-                      TOGGLE
-                    </div>
+                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;">
+                    <i class="fa fa-toggle-on" style="color: green;"></i>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12">
-                    <p class="my-2 mx-2">
+                    <p class="mx-2">
                       Identify bi-grams in the HTML document such that they may be used by the indexing team for enabling better indexing for words like "Computer Science" and hence, better results in queries.
                     </p>
                   </div>
                 </div>
               </div>
               <div class="box my-2 mx-2" style="border: 2px solid black; border-radius: 4px;">
-                <div class="row">
-                  <div class="col-9">
-                    <h4 class="my-2 mx-2">Tri-Gram Identification</h4>
+                <div class="row pt-2">
+                  <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
+                    Tri-Gram Identification
                   </div>
-                  <div class="col-3">
-                    <div style="height: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -25%);">
-                      TOGGLE
-                    </div>
+                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;">
+                    <i class="fa fa-toggle-on" style="color: green;"></i>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12">
-                    <p class="my-2 mx-2">
+                    <p class="mx-2">
                       Identify tri-grams in the HTML document such that they may be used by the indexing team for enabling better indexing for words like "Rensselaer Polytechnic Institute" and hence, better results in queries.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
               I am right
             </div>
           </div>
