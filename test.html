@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Text Transformation</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #d6001c;">
+      <a class="navbar-brand" href="#">Text Transformation</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="test.html">Test<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <div class="my-2" style="color: white;">
+          <strong>Team P (LSPT)</strong>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid" style="height: calc(100vh - 54px);">
+      <div class="row" style="height: 100%;">
+        <div class="col-lg-3" style="background-color: #F5F5F5">
+          <h2 class="my-4">Text Transformation</h2>
+          <p class="text-justify">
+            In this section, the user can observe how a HTML document will be transformed to the corresponding JSON format based on the recently saved text transformation settings.
+          </p>
+        </div>
+        <div class="col-lg-9">
+          <div class="row" style="height: 100%;">
+            <div class="col-md-6 mt-2" style="height: 100%;">
+              <h4>Documen to Test</h4>
+              <p>
+                Include a HTML file content to test the last saved text transformation settings.
+              </p>
+              <div class="input-box my-2 mx-2" style="border: 2px solid black; border-radius: 4px; height: 75%;">
+                <textarea class="form-control" id="transformed" style="height: 100%;"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-success btn-block">Transform Text</button>
+                </div>
+                <div class="col-3">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2" style="height: 100%;">
+              <h4>Resultant transformation</h4>
+              <p>
+                The list of bi-grams, tri-grams etc. identified based on the latest text transformation settings.
+              </p>
+              <div class="input-box my-2 mx-2" style="border: 2px solid black; border-radius: 4px; height: 75%;">
+                <textarea class="form-control" id="transformed" style="height: 100%;"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
