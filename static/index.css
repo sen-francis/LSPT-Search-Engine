@@ -1,3 +1,27 @@
+/*Styles for the box*/
+.box {
+  border: 2px solid black;
+  border-radius: 4px;
+}
+
+.box-header {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/*Styles for the toggle area*/
+.toggle-area {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.toggle-always-on {
+  font-size: 10px;
+  font-weight: bold;
+  color: green;
+  line-height: 24px;
+}
+
 /*Styles for setting the toggle switches*/
 .switch {
   position: relative;
@@ -60,4 +84,9 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/*Styles for the textarea*/
+.text-space {
+  width: 100%;
 }

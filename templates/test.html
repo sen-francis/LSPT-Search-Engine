@@ -7,11 +7,13 @@
     <!-- Include stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="static/common.css">
+    <link rel="stylesheet" href="static/test.css">
     <title>Text Transformation</title>
   </head>
   <body id="main">
     <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #d6001c;">
+    <nav class="navbar navbar-expand-lg navbar-dark nav-custom">
       <a class="navbar-brand" href="#">Text Transformation</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,16 +27,16 @@
             <a class="nav-link" href="/test">Test<span class="sr-only">(current)</span></a>
           </li>
         </ul>
-        <div class="my-2" style="color: white;">
+        <div class="my-2 right-nav-text">
           <strong>Team P (LSPT)</strong>
         </div>
       </div>
     </nav>
     <!-- Content -->
-    <div class="container-fluid" style="height: calc(100vh - 54px);">
-      <div class="row" style="height: 100%;">
+    <div class="container-fluid all-content">
+      <div class="row content-area">
         <!-- Side bar with information about page -->
-        <div class="col-lg-3" style="background-color: #F5F5F5">
+        <div class="col-lg-3 info-panel">
           <h2 class="my-4">Test</h2>
           <p class="text-justify">
             In this section, the user can observe how a HTML document will be transformed to the corresponding JSON format based on the recently saved text transformation settings.
@@ -42,14 +44,14 @@
         </div>
         <!-- Text transformation section -->
         <div class="col-lg-9">
-          <div class="row" style="height: 100%;">
-            <div class="col-md-6 mt-2" style="height: 100%;">
-              <h4>Documen to Test</h4>
+          <div class="row full-height">
+            <div class="col-md-6 mt-2 full-height">
+              <h4>Document to Test</h4>
               <p>
                 Include a HTML file content to test the last saved text transformation settings.
               </p>
-              <div class="input-box my-2 mx-2" style="border: 2px solid black; border-radius: 4px; height: 75%;">
-                <textarea class="form-control" id="to_transform" style="height: 100%;"></textarea>
+              <div class="input-box my-2 mx-2 textarea-container">
+                <textarea class="form-control full-height" id="to_transform"></textarea>
               </div>
               <div class="row">
                 <div class="col-3">
@@ -61,13 +63,13 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 mt-2" style="height: 100%;">
+            <div class="col-md-6 mt-2 full-height">
               <h4>Resultant transformation</h4>
               <p>
                 The list of bi-grams, tri-grams etc. identified based on the latest text transformation settings.
               </p>
-              <div class="input-box my-2 mx-2" style="border: 2px solid black; border-radius: 4px; height: 75%;">
-                <textarea class="form-control" id="transformed_text" style="height: 100%;"></textarea>
+              <div class="input-box my-2 mx-2 textarea-container">
+                <textarea class="form-control full-height" id="transformed_text"></textarea>
               </div>
             </div>
           </div>
