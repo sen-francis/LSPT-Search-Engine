@@ -48,3 +48,17 @@ def save_config():
 	)
 	return response
 
+@app.route('/test_config', methods = ['POST'])
+def test_config():
+	json_content = request.get_json()
+	to_transform = json_content['to_transform']
+
+	# TODO: Do transformation here
+
+	response = app.response_class(
+		response = json.dumps({"transformed_text": to_transform}),
+		status = 200,
+		mimetype = 'application/json'
+	)
+	return response
+
