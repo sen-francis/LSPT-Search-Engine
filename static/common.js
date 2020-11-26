@@ -1,5 +1,7 @@
+// Creates a modal in case of error or success message
 function createModal(title, message, canClose) {
 
+	// Create the modal
 	let modal = document.createElement('div');
 	modal.setAttribute('class', 'modal');
 	modal.setAttribute('id', 'info-modal');
@@ -16,6 +18,7 @@ function createModal(title, message, canClose) {
 	let content = document.createElement('div');
 	content.setAttribute('class', 'modal-content');
 
+	// Add a header
 	let header = document.createElement('div');
 	header.setAttribute('class', 'modal-header');
 
@@ -25,6 +28,7 @@ function createModal(title, message, canClose) {
 
 	header.appendChild(heading);
 
+	// Add a body
 	let body = document.createElement('div');
 	body.setAttribute('class', 'modal-body');
 
@@ -36,6 +40,7 @@ function createModal(title, message, canClose) {
 	content.appendChild(header);
 	content.appendChild(body);
 
+	// Add the close button
 	if (canClose == true) {
 
 		let footer = document.createElement('div');
@@ -56,10 +61,13 @@ function createModal(title, message, canClose) {
 	dialog.appendChild(content);
 	modal.appendChild(dialog);
 
+	// Add modal to HTML
 	let main_body = document.getElementById("main");
 	main_body.appendChild(modal);
 }
 
+// Close the modal on `Close` button click
 function closeModal() {
+	// Delete the complete modal HTML
 	document.getElementById('info-modal').remove();
 }

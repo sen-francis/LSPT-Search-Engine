@@ -1,3 +1,4 @@
+/*Styles for setting the toggle switches*/
 .switch {
   position: relative;
   display: inline-block;
@@ -5,12 +6,14 @@
   height: 28px;
 }
 
+/*Remove default HTML for checkbox*/
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
+/*Styles for slider in default position*/
 .slider {
   position: absolute;
   cursor: pointer;
@@ -35,6 +38,7 @@
   transition: .4s;
 }
 
+/*Styles when the switch is checked*/
 input:checked + .slider {
   background-color: green;
 }
@@ -49,6 +53,7 @@ input:checked + .slider:before {
   transform: translateX(23px);
 }
 
+/*Styles to make the slider round*/
 .slider.round {
   border-radius: 20px;
 }
