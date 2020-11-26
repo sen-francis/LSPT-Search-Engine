@@ -6,8 +6,7 @@
     "stop_words": [
         "a",
         "an",
-        "the",
-        "rpi"
+        "the"
     ],
     "update_interval": 1
 }
