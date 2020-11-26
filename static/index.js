@@ -1,5 +1,5 @@
 // Fetch the current settings
-fetch('http://127.0.0.1:5000/get_config')
+fetch('http://128.213.60.117:5000/get_config')
 .then(response => {
 	if (!response.ok) {
 		// Show error if unable to fetch configurations
@@ -139,7 +139,7 @@ function showSettings(config) {
 function saveConfig() {
 
 	// Send a POST API call to save the new settings
-	fetch("http://127.0.0.1:5000/save_config", {
+	fetch("http://128.213.60.117:5000/save_config", {
 	    method: "POST",
 	    body: JSON.stringify({
 	        lemmatization: document.getElementById("lemmatization_input").checked ? 1 : 0,
