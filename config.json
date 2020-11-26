@@ -1,0 +1,12 @@
+{
+    "lemmatization": 0,
+    "stemming": 0,
+    "bi_gram": 1,
+    "tri_gram": 1,
+    "stop_words": [
+        "a",
+        "an",
+        "the"
+    ],
+    "update_interval": 1
+}
