@@ -1,5 +1,7 @@
+// Test transformation of text based on latest settings
 function testConfig() {
 
+	// Send a POST request with the uploaded content
 	fetch("http://127.0.0.1:5000/test_config", {
 	    method: "POST",
 	    body: JSON.stringify({
@@ -9,15 +11,20 @@ function testConfig() {
       		"content-type": "application/json"
     	})
     }).then(function(response) {
-	    if (response.status !== 200) {
-	      console.log("Could not transform text!");
-	      return;
+		if (!response.ok) {
+			// Popup if the transformation could not be done
+			createModal("ERROR", "Cannot do transformations right now...", true);
+			document.getElementById("transform_button").disabled = true;
+			return Promise.reject('Could not load application!');
+	    } else {
+	    	// Update the right text area with transformation if it was
+	    	// successfully completed
+			response.json().then(function(data) {
+		      document.getElementById('transformed_text').value = data['transformed_text'];
+		    });
 	    }
-	    response.json().then(function(data) {
-	      document.getElementById('transformed_text').value = data['transformed_text'];
-	    });
   	}).catch(error => {
-		console.log("Could not update settings!");
+		console.log("Could not test transformation...");
 	});
 
 }

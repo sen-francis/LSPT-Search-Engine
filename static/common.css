@@ -1,0 +1,21 @@
+/*Styles for the nav bar*/
+.nav-custom {
+  background-color: #d6001c;
+}
+
+.right-nav-text {
+  color: white;
+}
+
+/*Styles for the content*/
+.all-content {
+  height: calc(100vh - 54px);
+}
+
+.content-area {
+  height: 100%;
+}
+
+.info-panel {
+  background-color: #F5F5F5;
+}

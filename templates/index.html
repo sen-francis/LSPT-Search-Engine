@@ -1,20 +1,23 @@
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
+    <!-- Include important meta information -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Include stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="static/common.css">
     <link rel="stylesheet" href="static/index.css">
     <title>Text Transformation</title>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #d6001c;">
+  <body id="main">
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark nav-custom">
       <a class="navbar-brand" href="#">Text Transformation</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -24,14 +27,16 @@
             <a class="nav-link" href="/test">Test</a>
           </li>
         </ul>
-        <div class="my-2" style="color: white;">
+        <div class="my-2 right-nav-text">
           <strong>Team P (LSPT)</strong>
         </div>
       </div>
     </nav>
-    <div class="container-fluid" style="height: calc(100vh - 54px);">
-      <div class="row" style="height: 100%;">
-        <div class="col-lg-3" style="background-color: #F5F5F5">
+    <!-- Content -->
+    <div class="container-fluid all-content">
+      <div class="row content-area">
+        <!-- Side bar with information about page -->
+        <div class="col-lg-3 info-panel">
           <h2 class="my-4">Settings</h2>
           <p class="text-justify">
             This module includes the options to change how text transformation is done on the crawled pages. You can select a certain set of words, toggle characteristics and more on the right side of the screen.<br><br>
@@ -39,15 +44,16 @@
             <strong>NOTE: </strong>Any changes made will be reflected only on new documents from the next transformation cycle.
           </p>
         </div>
+        <!-- Toggle options -->
         <div class="col-lg-9">
           <div class="row">
             <div class="col-md-6">
-              <div class="box my-2 mx-2" style="border: 2px solid black; border-radius: 4px;">
+              <div class="box my-2 mx-2">
                 <div class="row pt-2">
-                  <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
+                  <div class="col-9 pl-4 box-header">
                     Lemmatization
                   </div>
-                  <div class="col-3 pr-4 text-right" style="font-size: 20px; font-weight: bold;" id="lemmatization_toggle">
+                  <div class="col-3 pr-4 text-right toggle-area" id="lemmatization_toggle">
                   </div>
                 </div>
                 <div class="row">
@@ -58,12 +64,12 @@
                   </div>
                 </div>
               </div>
-              <div class="box my-2 mx-2" style="border: 2px solid black; border-radius: 4px;">
+              <div class="box my-2 mx-2">
                 <div class="row pt-2">
-                  <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
+                  <div class="col-9 pl-4 box-header">
                     Stemming
                   </div>
-                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;" id="stemming_toggle">
+                  <div class="col-3 pr-4 text-right toggle-area" id="stemming_toggle">
                   </div>
                 </div>
                 <div class="row">
@@ -74,12 +80,12 @@
                   </div>
                 </div>
               </div>
-              <div class="box my-2 mx-2" style="border: 2px solid black; border-radius: 4px;">
+              <div class="box my-2 mx-2">
                 <div class="row pt-2">
-                  <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
+                  <div class="col-9 pl-4 box-header">
                     Bi-Gram Identification
                   </div>
-                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;" id="bi_gram_toggle">
+                  <div class="col-3 pr-4 text-right toggle-area" id="bi_gram_toggle">
                   </div>
                 </div>
                 <div class="row">
@@ -90,12 +96,12 @@
                   </div>
                 </div>
               </div>
-              <div class="box my-2 mx-2" style="border: 2px solid black; border-radius: 4px;">
+              <div class="box my-2 mx-2">
                 <div class="row pt-2">
-                  <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
+                  <div class="col-9 pl-4 box-header">
                     Tri-Gram Identification
                   </div>
-                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;" id="tri_gram_toggle">
+                  <div class="col-3 pr-4 text-right toggle-area" id="tri_gram_toggle">
                   </div>
                 </div>
                 <div class="row">
@@ -108,12 +114,12 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="box my-2 mx-2" style="border: 2px solid black; border-radius: 4px;">
+              <div class="box my-2 mx-2">
                 <div class="row pt-2 pb-2">
-                  <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
+                  <div class="col-9 pl-4 box-header">
                     Stop Word Removing
                   </div>
-                  <div class="col-3 pr-4 text-right" style="font-size: 10px; font-weight: bold; color: green; line-height: 24px;">
+                  <div class="col-3 pr-4 text-right toggle-always-on">
                     ALWAYS ON
                   </div>
                 </div>
@@ -128,18 +134,18 @@
                   <div class="col-1">
                   </div>
                   <div class="col-10 mb-4">
-                    <textarea id="stop_words" style="width: 100%;" rows="10"></textarea>
+                    <textarea class="text-space" id="stop_words" rows="10"></textarea>
                   </div>
                   <div class="col-1">
                   </div>
                 </div>
               </div>
-              <div class="box my-2 mx-2" style="border: 2px solid black; border-radius: 4px;">
+              <div class="box my-2 mx-2">
                 <div class="row pt-2">
-                  <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
+                  <div class="col-9 pl-4 box-header">
                     Update interval
                   </div>
-                  <div class="col-3 pr-4 text-right" style="font-size: 10px; font-weight: bold; color: green; line-height: 24px;">
+                  <div class="col-3 pr-4 text-right toggle-always-on">
                     ALWAYS ON
                   </div>
                 </div>
@@ -163,7 +169,7 @@
                 <div class="col-2">
                 </div>
                 <div class="col-8">
-                  <button type="button" class="btn btn-success btn-block" onclick="saveConfig();">Save Settings</button>
+                  <button type="button" class="btn btn-success btn-block" onclick="saveConfig();" id="save">Save Settings</button>
                 </div>
                 <div class="col-2">
                 </div>
@@ -173,9 +179,11 @@
         </div>
       </div>
     </div>
+    <!-- Include scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="static/common.js"></script>
     <script src="static/index.js"></script>
   </body>
 </html>

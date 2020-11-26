@@ -1,10 +1,16 @@
+// Fetch the current settings
 fetch('http://127.0.0.1:5000/get_config')
 .then(response => {
 	if (!response.ok) {
-       return Promise.reject('Could not fetch configuration information');
+		// Show error if unable to fetch configurations
+		createModal("ERROR", "Cannot modify settings right now...", true);
+		document.getElementById("save").disabled = true;
+		return Promise.reject('Could not load application!');
+    } else {
+    	return response.json();
     }
-    return response.json();
 }).then(config => {
+	// Update settings on HTML if successfully received
 	showSettings(config);
 }).catch(error => {
 	console.log(error);
@@ -81,7 +87,6 @@ function showSettings(config) {
     label.appendChild(span);
     bi_gram_toggle.appendChild(label);
 
-
     // Set Tri-gram toggle	
 	let tri_gram_toggle = document.getElementById("tri_gram_toggle");
 	label = document.createElement('label');
@@ -130,8 +135,10 @@ function showSettings(config) {
     dropdown.appendChild(select);
 }
 
+// Save configuration on click of `Save Settings` button
 function saveConfig() {
 
+	// Send a POST API call to save the new settings
 	fetch("http://127.0.0.1:5000/save_config", {
 	    method: "POST",
 	    body: JSON.stringify({
@@ -146,13 +153,16 @@ function saveConfig() {
       		"content-type": "application/json"
     	})
     }).then(function(response) {
-	    if (response.status !== 200) {
-	      console.log("Could not update settings!");
-	      return;
+		if (!response.ok) {
+			// Popup error is not updated
+			createModal("ERROR", "Cannot modify settings right now...", true);
+			document.getElementById("save").disabled = true;
+			return Promise.reject('Could not load application!');
+	    } else {
+	    	// Popup to show the settings were successfully updated
+			createModal("SUCCESS", "Settings saved successfully!!!", true);
+	    	return response.json();
 	    }
-	    response.json().then(function(data) {
-	      console.log("Settings updated!!");
-	    });
   	}).catch(error => {
 		console.log("Could not update settings!");
 	});
