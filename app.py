@@ -31,9 +31,15 @@ def get_config():
 		)
 		return response
 
-@app.route('/save_config', methods=['POST'])
+@app.route('/save_config', methods = ['POST'])
 def save_config():
-	print(request.get_json())
+	json_content = request.get_json()
+
+	stop_words_list = [word.strip() for word in json_content["stop_words"].split(',')]
+	json_content["stop_words"] = stop_words_list;
+
+	with open('config.json', 'w') as file:
+		json.dump(json_content, file, indent = 4)
 
 	response = app.response_class(
 		response = json.dumps({}),

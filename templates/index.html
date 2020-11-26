@@ -63,8 +63,7 @@
                   <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
                     Stemming
                   </div>
-                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;">
-                    <i class="fa fa-toggle-off" style="color: red;"></i>
+                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;" id="stemming_toggle">
                   </div>
                 </div>
                 <div class="row">
@@ -80,8 +79,7 @@
                   <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
                     Bi-Gram Identification
                   </div>
-                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;">
-                    <i class="fa fa-toggle-on" style="color: green;"></i>
+                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;" id="bi_gram_toggle">
                   </div>
                 </div>
                 <div class="row">
@@ -97,8 +95,7 @@
                   <div class="col-9 pl-4" style="font-size: 20px; font-weight: bold;">
                     Tri-Gram Identification
                   </div>
-                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;">
-                    <i class="fa fa-toggle-on" style="color: green;"></i>
+                  <div class="col-3 pr-4 text-right" style="font-size: 24px; font-weight: bold;" id="tri_gram_toggle">
                   </div>
                 </div>
                 <div class="row">
@@ -130,13 +127,8 @@
                 <div class="row">
                   <div class="col-1">
                   </div>
-                  <div class="col-4 pb-2">
-                    <button type="button" class="btn btn-light btn-block">View</button>
-                  </div>
-                  <div class="col-2">
-                  </div>
-                  <div class="col-4 pb-2">
-                    <button type="button" class="btn btn-light btn-block">Upload New</button>
+                  <div class="col-10 mb-4">
+                    <textarea id="stop_words" style="width: 100%;" rows="10"></textarea>
                   </div>
                   <div class="col-1">
                   </div>
@@ -161,14 +153,7 @@
                 <div class="row">
                   <div class="col-7">
                   </div>
-                  <div class="col-4 pb-2">
-                    <select class="px-2 py-2" style="width: 100%; border-style: solid; border-radius: 4px;">
-                      <option value="1" selected="selected">Once a day</option>
-                      <option value="2">Twice a day</option>
-                      <option value="3">Thrice a day</option>
-                      <option value="4">Four times a day</option>
-                      <option value="5">Five times a day</option>
-                    </select>
+                  <div class="col-4 pb-2" id="update_dropdown">
                   </div>
                   <div class="col-1">
                   </div>
