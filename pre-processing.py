@@ -1,5 +1,4 @@
 import sys
-import re
 #need to download this library on server
 from bs4 import BeautifulSoup
 def pre_process(filename):
@@ -9,16 +8,19 @@ def pre_process(filename):
     dict = {}
     with open(filename, 'r') as file:
         soup = BeautifulSoup(file, 'html.parser')
-        #iterate through all tags
-        #NOTE: Currently this doesn't work for nested tags, I'm trying to fix this
-        for tag in soup():
-            if tag.name != "script":
-                dict[tag.name]=tag.string
         #get_text() finds all the words in the file, write this to new file
         f.write(soup.get_text())
+        #if a title exists, adds title tag to dictionary
+        if soup.title is not None:
+            dict[soup.title.name] = soup.title.string
+        dict['url'] = set()
+        #adds all urls to the dictionary
+        #assumes all links are associated with the "a" tag
+        for link in soup.find_all('a'):
+            if link.has_attr('href'):
+                dict['url'].add(link['href'])
     f.close()
     return dict,filename[0:-5]+"_words.txt"
-
 
 #print error message with proper format of command line args
 if (len(sys.argv) != 2):
