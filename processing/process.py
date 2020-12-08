@@ -1,5 +1,10 @@
 import json
 import os
+import sys
+#need to download this library on server
+from bs4 import BeautifulSoup
+
+
 
 
 def get_list_of_filepaths(root_directory):
@@ -9,6 +14,29 @@ def get_list_of_filepaths(root_directory):
             full_path = os.path.join(root, file)
             file_paths.append(full_path)
     return file_paths
+
+
+def pre_process(filename):
+    #make new file with name based on original name
+    f = open(filename[0:-5]+"_words.txt", "w")
+    #define a dictionary
+    dict = {}
+    with open(filename, 'r') as file:
+        soup = BeautifulSoup(file, 'html.parser')
+        #get_text() finds all the words in the file, write this to new file
+        f.write(soup.get_text())
+        #if a title exists, adds title tag to dictionary
+        if soup.title is not None:
+            dict[soup.title.name] = soup.title.string
+        dict['url'] = list()
+        #adds all urls to the dictionary
+        #assumes all links are associated with the "a" tag
+        for link in soup.find_all('a'):
+            if link.has_attr('href'):
+                dict['url'].append(link['href'])
+    f.close()
+    return dict,filename[0:-5]+"_words.txt"
+
 
 """helper function takes an ngram and a dictionary
 being used to count ngrams. If ngram in dictionary 
@@ -27,7 +55,7 @@ def parse_line(words, maxN, ngramCounters, stopWords={}, lastLine=0):
     #for last line in a document use all possible start words.
     if lastLine == 1:
         lastStartWordIndex = len(words)
-    #i tracks start word index
+    #i tracks start word lastStartWordIndex
     for i in range(lastStartWordIndex):
         startWord = words[i]
         handle_ngram(startWord, ngramCounters[0])
@@ -67,13 +95,17 @@ def count_unique_ngrams(inputFilePath, maxN=3):
     return ngramCounters
 
 
-preprocessedFileDirectory = "bal"
+def process_input_file(inputFileName, OutputDirectoryName, maxN=3):
+    data, wordFileName = pre_process(inputFileName)
+    ngramCounts = count_unique_ngrams(wordFileName, maxN)
+    data["Ngram Counts"] = ngramCounts
+    outputFileName = wordFileName[0:-10] + "_output.txt"
+    with open(OutputDirectoryName + "/" + outputFileName, 'w') as outputFile:
+        json.dump(data, outputFile)
+    outputFile.close()
+    os.remove(wordFileName)
 
-textFilePaths = get_list_of_filepaths(preprocessedFileDirectory)
 
-for filePath in textFilePaths
-    data = count_unique_ngrams(filePath)
-    
-
-for count in counts:
-    print(count)
+test_file = "test.html"
+outputDirectory = "TestOutput"
+process_input_file(test_file, outputDirectory)
