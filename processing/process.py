@@ -4,6 +4,18 @@ import sys
 #need to download this library on server
 from bs4 import BeautifulSoup
 
+helpstring = """usage: python3 process_html.py 'InputPath' 'OutputPath'
+
+Argument Explanations: 
+InputPath accepts a path to an input file or a directory 
+containing input files (use of subdirectories is also supported, just pass the 
+outer directory path). 
+
+OutputPath defines where output files are written to. It can point to an existing
+directory or if the directory is not found then a new directory with the given name
+will be created.
+"""
+
 
 
 
@@ -16,12 +28,16 @@ def get_list_of_filepaths(root_directory):
     return file_paths
 
 
-def pre_process(filename):
+def pre_process(filepath):
+    if filepath.rfind('/') != -1:
+        filename = filepath[filepath.rfind('/')+1:]
+    else:
+        filename = filepath
     #make new file with name based on original name
     f = open(filename[0:-5]+"_words.txt", "w")
     #define a dictionary
     dict = {}
-    with open(filename, 'r') as file:
+    with open(filepath, 'r') as file:
         soup = BeautifulSoup(file, 'html.parser')
         #get_text() finds all the words in the file, write this to new file
         f.write(soup.get_text())
@@ -35,6 +51,7 @@ def pre_process(filename):
             if link.has_attr('href'):
                 dict['url'].append(link['href'])
     f.close()
+    file.close()
     return dict,filename[0:-5]+"_words.txt"
 
 
@@ -95,17 +112,41 @@ def count_unique_ngrams(inputFilePath, maxN=3):
     return ngramCounters
 
 
-def process_input_file(inputFileName, OutputDirectoryName, maxN=3):
-    data, wordFileName = pre_process(inputFileName)
-    ngramCounts = count_unique_ngrams(wordFileName, maxN)
+def process_input_file(inputFilePath, OutputDirectoryName, maxN=3):
+    data, wordFilePath = pre_process(inputFilePath)
+    ngramCounts = count_unique_ngrams(wordFilePath, maxN)
     data["Ngram Counts"] = ngramCounts
+    if wordFilePath.rfind('/') != -1:
+        wordFileName = wordFilePath[wordFilePath.rfind('/'):]
+    else:
+        wordFileName = wordFilePath
     outputFileName = wordFileName[0:-10] + "_output.txt"
     with open(OutputDirectoryName + "/" + outputFileName, 'w') as outputFile:
         json.dump(data, outputFile)
     outputFile.close()
-    os.remove(wordFileName)
+    os.remove(wordFilePath)
 
 
-test_file = "test.html"
-outputDirectory = "TestOutput"
-process_input_file(test_file, outputDirectory)
+
+def main():
+    inputPath= sys.argv[1]
+    if inputPath == "--help":
+        print(helpstring)
+        return
+    else:
+        outputPath = sys.argv[2]
+        #if outputPath doesn't exist then create a directory there.
+        try:
+            os.mkdir(outputFileDirectory, mode=0o777)
+        except:
+            pass
+    inputFiles = get_list_of_filepaths(inputPath)
+    for filepath in inputFiles:
+        process_input_file(filepath, outputPath)
+
+
+
+if __name__ == "__main__":
+    main()
+
+
