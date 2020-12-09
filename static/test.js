@@ -2,7 +2,7 @@
 function testConfig() {
 
 	// Send a POST request with the uploaded content
-	fetch("http://127.0.0.1:5000/test_config", {
+	fetch("http://128.213.60.117:5000/test_config", {
 	    method: "POST",
 	    body: JSON.stringify({
 	        to_transform: document.getElementById("to_transform").value
