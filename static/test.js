@@ -20,7 +20,7 @@ function testConfig() {
 	    	// Update the right text area with transformation if it was
 	    	// successfully completed
 			response.json().then(function(data) {
-		      document.getElementById('transformed_text').value = data['transformed_text'];
+		      document.getElementById('transformed_text').value = JSON.stringify(data["transformed_text"], undefined, 4);
 		    });
 	    }
   	}).catch(error => {
