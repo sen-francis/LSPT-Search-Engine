@@ -46,7 +46,7 @@ def pre_process(filepath):
         soup = BeautifulSoup(file, 'html.parser')
         #get_text() finds all the words in the file, write this to new file
 
-        f.write(re.sub(r"[^\w\d'\s]+",'',soup.get_text()).lower())
+        f.write(re.sub(r"[^\w\d'\s]+",' ',soup.get_text()).lower())
         #if a title exists, adds title tag to dictionary
         if soup.title is not None:
             dict[soup.title.name] = soup.title.string
