@@ -167,7 +167,7 @@ def multiprocessing_main():
         outputPath = sys.argv[2]
         #if outputPath doesn't exist then create a directory there.
         try:
-            os.mkdir(outputFileDirectory, mode=0o777)
+            os.mkdir(outputPath, mode=0o777)
         except:
             pass
         inputFiles = get_list_of_filepaths(inputPath)
@@ -180,6 +180,7 @@ def multiprocessing_main():
 
 if __name__ == "__main__":
    multiprocessing_main()
+
 
 
 # def merge_names(a, b):
