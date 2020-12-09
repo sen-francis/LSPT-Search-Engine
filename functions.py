@@ -183,7 +183,6 @@ def multiprocessing_main():
 
 def multiprocessing_main_integrated(input_dir, output_dir):
 
-    print("I could reach inside")
     if input_dir == "--help":
         print(helpstring)
         return
@@ -210,22 +209,22 @@ def getDocument(url: str):
         os.mkdir("TestFiles", mode=0o777)
     except:
         pass
+
     basename = os.path.basename(url)
+
     with urllib.request.urlopen(url) as f:
-        print("I got inside again")
         try:
             html = f.read().decode('utf-8')
         except Exception as err:
             print("Error occured: {}".format(err))
 
-    print(html)
     f = open("TestFiles/"+ basename + ".html" , 'w', encoding="utf8")
     f.write(html)
     f.close()
 
     # process downloaded html
     multiprocessing_main_integrated("TestFiles", "Test_Output")
-    print("I could reach here")
+
     # return output as json
     with open("Test_Output/" + basename + "_output.txt", "r") as read_file:
         data = json.load(read_file)
