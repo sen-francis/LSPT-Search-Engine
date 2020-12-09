@@ -3,6 +3,7 @@
     "stemming": 0,
     "bi_gram": 1,
     "tri_gram": 1,
+    "links": 0,
     "stop_words": [
         "the",
         "of",

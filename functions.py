@@ -109,6 +109,13 @@ for ngrams. It returns a list of dictionaries where each dictionary
 corresponds to a n value and each key in a dictionary is a unique
 ngram and the value is the number of times it occurs in the input file."""
 def count_unique_ngrams(inputFilePath, maxN=3):
+
+    # Get stop words
+    with open('config.json') as file:
+        config = json.load(file)
+
+    stop_words = config["stop_words"]
+
     ngramCounters = []
     for n in range(maxN):
         ngramCounters.append(dict())
@@ -116,8 +123,8 @@ def count_unique_ngrams(inputFilePath, maxN=3):
         lastWords = []
         for line in file:
             words = lastWords + line.split()
-            lastWords = parse_line(words, maxN, ngramCounters, [])
-        parse_line(lastWords, maxN, ngramCounters, [], 1)
+            lastWords = parse_line(words, maxN, ngramCounters, stop_words)
+        parse_line(lastWords, maxN, ngramCounters, stop_words, 1)
     file.close()
     return ngramCounters
 

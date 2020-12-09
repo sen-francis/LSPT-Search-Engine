@@ -130,6 +130,13 @@ def test_config():
 		# Transform the HTML in the URL
 		result_json = getDocument(to_transform)
 
+		# Filter data based on settings
+		with open('config.json') as file:
+	  		config = json.load(file)
+
+		if config["links"] == 0:
+	  		del result_json["url"]
+
 		# Create response with the transformed text
 		response = app.response_class(
 			response = json.dumps({"message": "Text transformed.", "transformed_text": result_json}),
