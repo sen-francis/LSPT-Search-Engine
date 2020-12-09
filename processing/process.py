@@ -135,7 +135,7 @@ def process_input_file(inputFilePath, OutputDirectoryName, maxN=3):
     with open(OutputDirectoryName + "/" + outputFileName, 'w') as outputFile:
         json.dump(data, outputFile)
     outputFile.close()
-#    os.remove(wordFilePath)
+    os.remove(wordFilePath)
     print("Finished processing: ", inputFilePath, " \n")
 
 
@@ -175,6 +175,22 @@ def multiprocessing_main():
         with multiprocessing.Pool() as pool:
             pool.starmap(process_input_file, arglist)
 
+
+
+def multiprocessing_main_integrated(input_dir, output_dir):
+    if input_dir == "--help":
+        print(helpstring)
+        return
+    else:
+        #if outputPath doesn't exist then create a directory there.
+        try:
+            os.mkdir(output_dir, mode=0o777)
+        except:
+            pass
+        inputFiles = get_list_of_filepaths(input_dir)
+        arglist = [(inputFile, output_dir) for inputFile in inputFiles]
+        with multiprocessing.Pool() as pool:
+            pool.starmap(process_input_file, arglist)
 
 
 
