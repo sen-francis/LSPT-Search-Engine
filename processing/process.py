@@ -2,6 +2,7 @@ import json
 import os
 import sys
 #need to download this library on server
+import bs4
 from bs4 import BeautifulSoup
 import multiprocessing
 from itertools import product
@@ -177,7 +178,6 @@ def multiprocessing_main():
 
 if __name__ == "__main__":
    multiprocessing_main()
-
 
 
 # def merge_names(a, b):
