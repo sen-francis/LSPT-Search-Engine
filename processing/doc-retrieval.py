@@ -12,6 +12,11 @@ def getDocument(url: str):
     """
 
     # download html
+
+    try:
+        os.mkdir("TestFiles", mode=0o777)
+    except:
+        pass
     basename = os.path.basename(url)
     with urllib.request.urlopen(url) as f:
         html = f.read().decode('utf-8')
@@ -30,4 +35,4 @@ def getDocument(url: str):
 
 
 
-# print(getDocument("http://50.116.50.126:8001/html/2"))
+#  print(getDocument("http://50.116.50.126:8001/html/5"))
