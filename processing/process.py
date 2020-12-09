@@ -3,6 +3,9 @@ import os
 import sys
 #need to download this library on server
 from bs4 import BeautifulSoup
+import multiprocessing
+from itertools import product
+import timeit
 
 helpstring = """usage: python3 process_html.py 'InputPath' 'OutputPath'
 
@@ -113,7 +116,12 @@ def count_unique_ngrams(inputFilePath, maxN=3):
 
 
 def process_input_file(inputFilePath, OutputDirectoryName, maxN=3):
-    data, wordFilePath = pre_process(inputFilePath)
+    print("Starting to process: ", inputFilePath)
+    try:
+        data, wordFilePath = pre_process(inputFilePath)
+    except:
+        print("FAILED to Process ", inputFilePath)
+        return
     ngramCounts = count_unique_ngrams(wordFilePath, maxN)
     data["Ngram Counts"] = ngramCounts
     if wordFilePath.rfind('/') != -1:
@@ -125,11 +133,12 @@ def process_input_file(inputFilePath, OutputDirectoryName, maxN=3):
         json.dump(data, outputFile)
     outputFile.close()
     os.remove(wordFilePath)
+    print("Finished processing: ", inputFilePath, " \n")
 
 
 
 def main():
-    inputPath= sys.argv[1]
+    inputPath = sys.argv[1]
     if inputPath == "--help":
         print(helpstring)
         return
@@ -146,7 +155,39 @@ def main():
 
 
 
-if __name__ == "__main__":
-    main()
+def multiprocessing_main():
+    inputPath= sys.argv[1]
+    if inputPath == "--help":
+        print(helpstring)
+        return
+    else:
+        outputPath = sys.argv[2]
+        #if outputPath doesn't exist then create a directory there.
+        try:
+            os.mkdir(outputFileDirectory, mode=0o777)
+        except:
+            pass
+        inputFiles = get_list_of_filepaths(inputPath)
+        arglist = [(inputFile, outputPath) for inputFile in inputFiles]
+        with multiprocessing.Pool() as pool:
+            pool.starmap(process_input_file, arglist)
 
+
+
+
+if __name__ == "__main__":
+   multiprocessing_main()
+
+
+
+# def merge_names(a, b):
+#     return '{} & {}'.format(a, b)
+
+# if __name__ == '__main__':
+#     test = "AHHH"
+#     names = ['Brown', 'Wilson', 'Bartlett', 'Rivera', 'Molloy', 'Opie']
+#     arglist = [(test, name) for name in names]
+#     with multiprocessing.Pool(processes=3) as pool:
+#         results = pool.starmap(merge_names, arglist)
+#     print(results)
 
