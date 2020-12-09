@@ -103,6 +103,7 @@ function saveConfig() {
 	        stemming: 0, // Future support
 	        bi_gram: document.getElementById("bi_gram_input").checked ? 1 : 0,
 	        tri_gram: document.getElementById("tri_gram_input").checked ? 1 : 0,
+	        links: document.getElementById("all_links_input").checked ? 1 : 0,
 	        stop_words: document.getElementById("stop_words").value,
 	        update_interval: 1
         }),
