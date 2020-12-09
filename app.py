@@ -1,5 +1,21 @@
+"""
+Text Transformation Service
+---------------------------
+
+The application has been developed as a service to transform a list of HTML documents
+in parallel. The service is intended to run as a CRON job once every day and provides
+a Administrative UI where settings related to the service can be tweaked and saved.
+
+Developed by:
+Team-P: Karan Bhanot, Tim Budding, Sen Francis and Zachary Koo
+Last Updated on: December 9, 2020
+"""
+
+# Import libraries
 import json
 from flask import Flask, render_template, jsonify, request
+from functions import getDocument
+
 
 # Define app for FLASK
 app = Flask(__name__)
@@ -111,11 +127,12 @@ def test_config():
 		json_content = request.get_json()
 		to_transform = json_content['to_transform']
 
-		# TODO: Do transformation here
+		# Transform the HTML in the URL
+		result_json = getDocument(to_transform)
 
 		# Create response with the transformed text
 		response = app.response_class(
-			response = json.dumps({"message": "Text transformed.", "transformed_text": to_transform}),
+			response = json.dumps({"message": "Text transformed.", "transformed_text": result_json}),
 			status = 200,
 			mimetype = 'application/json'
 		)

@@ -2,7 +2,7 @@
 function testConfig() {
 
 	// Send a POST request with the uploaded content
-	fetch("http://128.213.60.117:5000/test_config", {
+	fetch("http://127.0.0.1:5000/test_config", {
 	    method: "POST",
 	    body: JSON.stringify({
 	        to_transform: document.getElementById("to_transform").value
@@ -20,7 +20,7 @@ function testConfig() {
 	    	// Update the right text area with transformation if it was
 	    	// successfully completed
 			response.json().then(function(data) {
-		      document.getElementById('transformed_text').value = data['transformed_text'];
+		      document.getElementById('transformed_text').value = JSON.stringify(data["transformed_text"], undefined, 4);
 		    });
 	    }
   	}).catch(error => {
