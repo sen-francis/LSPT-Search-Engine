@@ -47,7 +47,7 @@ def pre_process(filepath):
         #get_text() finds all the words in the file, write this to new file
         #the words are then stripped of all punctuation (except apostrophes as needed)
         #then the words are all made lowercase
-        f.write(re.sub(r"(?!\b'\b)'","",re.sub(r"[^\w\d'\s]+",' ',soup.get_text()).lower()))
+        f.write(re.sub(r"(?!\b'\b)'","",re.sub(r"[^\w\d'\s]+",' ',soup.get_text(separator=' ')).lower()))
         #if a title exists, adds title tag to dictionary
         if soup.title is not None:
             dict[soup.title.name] = soup.title.string
