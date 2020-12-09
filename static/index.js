@@ -64,6 +64,29 @@ function showSettings(config) {
     label.appendChild(span);
     tri_gram_toggle.appendChild(label);
 
+    // Set All Links toggle
+	let all_links_toggle = document.getElementById("all_links");
+	label = document.createElement('label');
+	label.setAttribute('class', 'switch');
+
+	input = document.createElement('input');
+	input.type = 'checkbox';
+	input.id = 'all_links_input';
+	input.name = 'all_links_input';
+
+	if (config["links"] == 1) {
+		input.checked = true;
+	} else {
+		input.checked = false;
+	}
+
+	span = document.createElement('span');
+	span.setAttribute('class', 'slider round');
+
+    label.appendChild(input);
+    label.appendChild(span);
+    all_links_toggle.appendChild(label);
+
     // Set stop words
     let stop_words = document.getElementById('stop_words');
     stop_words.value = config['stop_words'];
