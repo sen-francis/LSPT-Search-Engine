@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import re
 #need to download this library on server
 import bs4
 from bs4 import BeautifulSoup
@@ -10,10 +11,10 @@ import timeit
 
 helpstring = """usage: python3 process_html.py 'InputPath' 'OutputPath'
 
-Argument Explanations: 
-InputPath accepts a path to an input file or a directory 
-containing input files (use of subdirectories is also supported, just pass the 
-outer directory path). 
+Argument Explanations:
+InputPath accepts a path to an input file or a directory
+containing input files (use of subdirectories is also supported, just pass the
+outer directory path).
 
 OutputPath defines where output files are written to. It can point to an existing
 directory or if the directory is not found then a new directory with the given name
@@ -44,7 +45,8 @@ def pre_process(filepath):
     with open(filepath, 'r') as file:
         soup = BeautifulSoup(file, 'html.parser')
         #get_text() finds all the words in the file, write this to new file
-        f.write(soup.get_text())
+
+        f.write(re.sub(r"[^\w\d'\s]+",'',soup.get_text()).lower())
         #if a title exists, adds title tag to dictionary
         if soup.title is not None:
             dict[soup.title.name] = soup.title.string
@@ -60,7 +62,7 @@ def pre_process(filepath):
 
 
 """helper function takes an ngram and a dictionary
-being used to count ngrams. If ngram in dictionary 
+being used to count ngrams. If ngram in dictionary
 count is incremented by 1. If ngram isn't in dictionary
 then add it as a key and set value (num occurrences) to 1."""
 def handle_ngram(ngram, ngram_counter):
@@ -133,7 +135,7 @@ def process_input_file(inputFilePath, OutputDirectoryName, maxN=3):
     with open(OutputDirectoryName + "/" + outputFileName, 'w') as outputFile:
         json.dump(data, outputFile)
     outputFile.close()
-    os.remove(wordFilePath)
+#    os.remove(wordFilePath)
     print("Finished processing: ", inputFilePath, " \n")
 
 
@@ -190,4 +192,3 @@ if __name__ == "__main__":
 #     with multiprocessing.Pool(processes=3) as pool:
 #         results = pool.starmap(merge_names, arglist)
 #     print(results)
-
